@@ -1,0 +1,12 @@
+export function getInitials(fullName) {
+    if (fullName === undefined || fullName === null || fullName.trim() === "") {
+        return ""; // Or return a default, like "??", or a placeholder.
+      }
+    const names = fullName.split(" ");
+  
+    const initials = names.slice(0, 2).map((name) => name[0].toUpperCase());
+  
+    const initialsStr = initials.join("");
+  
+    return initialsStr;
+}
