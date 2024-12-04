@@ -1,6 +1,7 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaUserLock } from "react-icons/fa";
+import { IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getInitials } from "../utils";
@@ -37,7 +38,7 @@ const UserAvatar = () => {
                     leaveTo="transform opacity-0 scale-95"
                 >
                     <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-2xl ring-1 ring-black/5 focus:outline-none">
-                        <div className="p-4">
+                        <div className="p-4 flex flex-col gap-2">
                             <Menu.Item>
                                 {({ active }) => (
                                     <button 
@@ -48,6 +49,34 @@ const UserAvatar = () => {
                                     >
                                         <FaUser className="mr-2" aria-hidden="true"/>
                                         Profile
+                                    </button>
+                                )}
+                            </Menu.Item>
+
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button 
+                                        onClick={() => setOpenPassword(true)} 
+                                        className={`${
+                                            active ? 'bg-blue-50' : ''
+                                        } text-gray-700 group flex w-full items-center rounded-md px-2 py-2 text-base`}
+                                    >
+                                        <FaUserLock className="mr-2" aria-hidden="true"/>
+                                        Change Password
+                                    </button>
+                                )}
+                            </Menu.Item>
+
+                            <Menu.Item>
+                                {({ active }) => (
+                                    <button 
+                                        onClick={logoutHandler} 
+                                        className={`${
+                                            active ? 'bg-red-50' : ''
+                                        } text-red-600 group flex w-full items-center rounded-md px-2 py-2 text-base`}
+                                    >
+                                        <IoLogOutOutline className="mr-2" aria-hidden="true"/>
+                                        Logout
                                     </button>
                                 )}
                             </Menu.Item>
